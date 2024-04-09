@@ -2,13 +2,14 @@
 import Hero from "@/components/Hero";
 import Button from "@/components/Button";
 import TodoList from "@/components/TodoList";
+import Form from "@/components/TodoForm";
 import { ThemeContext } from "../../components/contextApi/ThemeContext";
 
 import React, { useState, useContext } from "react";
-import { MdAdd } from "react-icons/md";
+// import { MdAdd } from "react-icons/md";
 // import { FaRegEdit } from "react-icons/fa";
 // import { MdDelete } from "react-icons/md";
-import { CiSaveDown1 } from "react-icons/ci";
+// import { CiSaveDown1 } from "react-icons/ci";
 import Navbar from "../../components/Navbar";
 const Todo = () => {
   const [todo, setTodo] = useState("");
@@ -88,41 +89,31 @@ const Todo = () => {
 
   return (
     <div
+
     // className={`${theme}`}
     >
       <Navbar />
       {isEmpty && (
-        <div className="border-2 border-black w-1/6 py-2 text-center rounded-md text-xl cursor-pointer shadow-md bg-red-600 text-white hover:bg-white hover:text-black transition-all absolute right-28 top-15">
+        <div
+          style={{ width: "10%" }}
+          className="  py-2 text-center rounded-md text-xl cursor-pointer shadow-md bg-red-400 text-white transition-all duration-500 transform animate-slideIn absolute top-10 right-28 -translate-y-full"
+        >
           Write Todo
         </div>
       )}
-      <div className=" w-2/3 mx-auto flex flex-col p-9 items-center mt-3  ">
+      <div className=" w-3/4 mx-auto  flex flex-col my-4 items-center mt-3  ">
         <Hero />
-        <div className="border-2 rounded-sm w-1/2 flex p-2 px-3 justify-between items-center text-xl">
-          <input
-            className="border-none outline-none basis-11/12"
-            type="text"
-            placeholder={editPlaceholder ? "Write new todo" : "Edit todo"}
-            value={todo}
-            onChange={(e) => setTodo(e.target.value)}
-          />
-          <span className="text-2xl">
-            {toggle ? (
-              <MdAdd
-                className="text-gray-500 hover:text-gray-700"
-                onClick={addTodo}
-              />
-            ) : (
-              <CiSaveDown1
-                className="text-gray-500 hover:text-gray-700"
-                onClick={saveTodo}
-              />
-            )}
-          </span>
-        </div>
+        <Form
+          addTodo={addTodo}
+          saveTodo={saveTodo}
+          todo={todo}
+          editPlaceholder={editPlaceholder}
+          toggle={toggle}
+          setTodo={setTodo}
+        />
         <Button setTodoList={setTodoList} todoList={todoList} />
 
-        <div className=" w-2/3 my-4 flex flex-col items-center">
+        <div className=" w-3/4 border-2 border-black my-4 flex flex-col items-center">
           <TodoList
             deleteTodo={deleteTodo}
             findEditTodo={findEditTodo}

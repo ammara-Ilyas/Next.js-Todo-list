@@ -6,10 +6,6 @@ import Form from "@/components/TodoForm";
 import { ThemeContext } from "../../components/contextApi/ThemeContext";
 
 import React, { useState, useContext } from "react";
-// import { MdAdd } from "react-icons/md";
-// import { FaRegEdit } from "react-icons/fa";
-// import { MdDelete } from "react-icons/md";
-// import { CiSaveDown1 } from "react-icons/ci";
 import Navbar from "../../components/Navbar";
 const Todo = () => {
   const [todo, setTodo] = useState("");
@@ -20,8 +16,6 @@ const Todo = () => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
 
-  // const { theme } = useContext(ThemeContext);
-  // console.log(theme);
   const addTodo = (e) => {
     e.preventDefault();
     if (todo.trim() !== "") {
@@ -87,6 +81,8 @@ const Todo = () => {
     setTodoList(updatedTodoList);
   };
 
+  const { theme } = useContext(ThemeContext);
+  console.log(theme);
   return (
     <div
 
@@ -113,7 +109,7 @@ const Todo = () => {
         />
         <Button setTodoList={setTodoList} todoList={todoList} />
 
-        <div className=" w-3/4 border-2 border-black my-4 flex flex-col items-center">
+        <div className=" w-7/12 shadow-md h-[20rem] b my-4 flex flex-col items-center overflow-y-auto  scroll-auto">
           <TodoList
             deleteTodo={deleteTodo}
             findEditTodo={findEditTodo}

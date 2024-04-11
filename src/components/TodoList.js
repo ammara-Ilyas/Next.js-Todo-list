@@ -17,7 +17,7 @@ function TodoList({
         <>
           {todoList.map((item) => (
             <div
-              className="border-2 flex justify-between py-2 w-3/4 px-2 mt-3 rounded-sm"
+              className="border-2 flex justify-between py-2 w-11/12 px-2 mt-3 rounded-sm scroll-y"
               key={item.id}
             >
               <div

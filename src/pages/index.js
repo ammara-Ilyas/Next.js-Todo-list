@@ -5,16 +5,19 @@ import TodoList from "@/components/TodoList";
 import Form from "@/components/TodoForm";
 import { ThemeContext } from "../../components/contextApi/ThemeContext";
 
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 const Todo = () => {
   const [todo, setTodo] = useState("");
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState([
+    { id: "12434", name: "BreakFast", completed: true },
+  ]);
   const [toggle, setToggle] = useState(true);
   const [editTodo, setEditTodo] = useState(null);
   const [editPlaceholder, setEditPlaceholder] = useState(true);
   const [isCompleted, setIsCompleted] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
+  const [todoData, setTodoData] = useState([...todoList]);
 
   const addTodo = (e) => {
     e.preventDefault();
@@ -107,14 +110,14 @@ const Todo = () => {
           toggle={toggle}
           setTodo={setTodo}
         />
-        <Button setTodoList={setTodoList} todoList={todoList} />
+        <Button setTodoList={setTodoData} todoList={todoList} />
 
         <div className=" w-7/12 shadow-md h-[20rem] b my-4 flex flex-col items-center overflow-y-auto  scroll-auto">
           <TodoList
             deleteTodo={deleteTodo}
             findEditTodo={findEditTodo}
             handleCompletedTodosCheck={handleCompletedTodosCheck}
-            todoList={todoList}
+            todoList={todoData}
             setIsCompleted={setIsCompleted}
           />
         </div>

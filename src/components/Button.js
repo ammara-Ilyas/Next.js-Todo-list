@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Button({ setTodoList, todoList }) {
   const [filter, setFilter] = useState("all"); // State to track the current filter
@@ -11,27 +11,24 @@ function Button({ setTodoList, todoList }) {
 
     console.log("todoList", allTodo);
   };
+  useEffect(() => {
+    setTodoList([...todoList]);
+    setFilter("all");
+  }, [setTodoList, todoList]);
+  
   const handleActive = () => {
     let updateTodo = todoList.filter((item) => item.completed !== true);
     console.log("active", updateTodo);
     setTodoList(updateTodo);
     setFilter("active");
   };
-  // const handleCompleted = () => {
-  //   let updateTodo = todoList.filter((item) => item.completed == true);
-  //   console.log("comp", updateTodo);
-  //   setTodoList(updateTodo);
-  // };
   const handleCompleted = () => {
-    // If already showing completed todos, show all todos instead
-    if (todoList.some((item) => item.completed)) {
-      setTodoList([...todoList]); // Show all todos
-    } else {
-      const completedTodos = todoList.filter((item) => item.completed);
-      setTodoList(completedTodos); // Show only completed todos
-      setFilter("completed");
-    }
+    let updateTodo = todoList.filter((item) => item.completed == true);
+    console.log("comp", updateTodo);
+    setTodoList(updateTodo);
+    setFilter("completed");
   };
+
   return (
     <ul className="flex justify-between my-4 w-2/3 text-2xl px-3">
       <li

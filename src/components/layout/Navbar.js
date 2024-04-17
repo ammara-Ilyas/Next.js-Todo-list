@@ -1,13 +1,12 @@
 "use client";
 import React, { useState, useContext } from "react";
-import logo from "../public/Image/logo.png";
+import logo from "../../../public/Image/logo.png";
 import Image from "next/image";
 import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
-import { ThemeContext } from "./contextApi/ThemeContext";
+import { ThemeContext } from "../../../components/contextApi/ThemeContext";
 function Navbar() {
   const { switchDark, switchLight, theme } = useContext(ThemeContext);
-  console.log(switchDark, switchLight, theme);
 
   return (
     <div className="shadow-lg sticky z-0 border-none bg-white top-0 py-1">

@@ -6,7 +6,7 @@ import Form from "@/components/TodoForm";
 import { ThemeContext } from "../../components/contextApi/ThemeContext";
 
 import React, { useState, useContext, useEffect } from "react";
-import Navbar from "../../components/Navbar";
+import Navbar from "../components/layout/Navbar";
 const Todo = () => {
   const [todo, setTodo] = useState("");
   const [todoList, setTodoList] = useState([]);

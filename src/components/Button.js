@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function Button({ setTodoList, todoList }) {
-  const [filter, setFilter] = useState("all"); // State to track the current filter
+  const [filter, setFilter] = useState("all");
 
   const allTodo = [...todoList];
   console.log(allTodo);
@@ -15,7 +15,7 @@ function Button({ setTodoList, todoList }) {
     setTodoList([...todoList]);
     setFilter("all");
   }, [setTodoList, todoList]);
-  
+
   const handleActive = () => {
     let updateTodo = todoList.filter((item) => item.completed !== true);
     console.log("active", updateTodo);
@@ -24,7 +24,6 @@ function Button({ setTodoList, todoList }) {
   };
   const handleCompleted = () => {
     let updateTodo = todoList.filter((item) => item.completed == true);
-    console.log("comp", updateTodo);
     setTodoList(updateTodo);
     setFilter("completed");
   };

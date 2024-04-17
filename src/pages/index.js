@@ -9,9 +9,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 const Todo = () => {
   const [todo, setTodo] = useState("");
-  const [todoList, setTodoList] = useState([
-    { id: "12434", name: "BreakFast", completed: true },
-  ]);
+  const [todoList, setTodoList] = useState([]);
   const [toggle, setToggle] = useState(true);
   const [editTodo, setEditTodo] = useState(null);
   const [editPlaceholder, setEditPlaceholder] = useState(true);
@@ -66,11 +64,7 @@ const Todo = () => {
     const updatedTodos = todoList.filter((item) => {
       return item.id !== id;
     });
-    ///another way
-    // const editedTodoIndex = todoList.find((elem) => elem.id === id);
-    // console.log(editedTodoIndex);
-    // const updatedTodos[...todoList]
-    // updatedTodos.splice(editedTodoIndex,1)
+
     setTodoList(updatedTodos);
   };
 

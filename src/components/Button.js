@@ -1,14 +1,15 @@
+import { setUserInformation } from "@/Redux/slice";
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 function Button({ setTodoList, todoList }) {
-  const [filter, setFilter] = useState("all");
-
+  const [filter, setFilter] = useState("all"); // State to track the current filter
+let dispatch = useDispatch();
   const allTodo = [...todoList];
   console.log(allTodo);
   const handleAll = () => {
     setTodoList(allTodo);
     setFilter("all");
-
     console.log("todoList", allTodo);
   };
   useEffect(() => {
@@ -21,6 +22,8 @@ function Button({ setTodoList, todoList }) {
     console.log("active", updateTodo);
     setTodoList(updateTodo);
     setFilter("active");
+    dispatch(setUserInformation({userName:"Zeeshan"}))
+    
   };
   const handleCompleted = () => {
     let updateTodo = todoList.filter((item) => item.completed == true);

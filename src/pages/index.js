@@ -7,6 +7,8 @@ import { ThemeContext } from "../../components/contextApi/ThemeContext";
 
 import React, { useState, useContext, useEffect } from "react";
 import Navbar from "../components/layout/Navbar";
+import { useDispatch } from "react-redux";
+import { setTodoReducer } from "@/Redux/slice";
 const Todo = () => {
   const [todo, setTodo] = useState("");
   const [todoList, setTodoList] = useState([]);
@@ -16,6 +18,7 @@ const Todo = () => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
   const [todoData, setTodoData] = useState([...todoList]);
+  let dispatch = useDispatch();
 
   const addTodo = (e) => {
     e.preventDefault();
@@ -29,6 +32,13 @@ const Todo = () => {
         },
       ]);
       setIsEmpty(false);
+      dispatch(
+        setTodoReducer({
+          id: Math.floor(Math.random() * 1000000),
+          name: todo,
+          completed: false,
+        })
+      );
     } else {
       setIsEmpty(true);
       setTimeout(() => {
